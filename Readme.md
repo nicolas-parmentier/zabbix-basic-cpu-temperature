@@ -1,5 +1,5 @@
-# Zabbix Basic CPU Temperature
-This is a very basic template for Zabbix to monitor CPU temperature of Linux machines based on [this](https://myopsblog.wordpress.com/2016/06/06/cpu-temperature-monitoring-with-zabbix/) blogpost.
+# Zabbix Basic CPU/MB Temperature
+This is a very basic template for Zabbix to monitor CPU & MainBoard temperature of Linux machines based on [this](https://myopsblog.wordpress.com/2016/06/06/cpu-temperature-monitoring-with-zabbix/) blogpost.
 
 
 ## How to Install

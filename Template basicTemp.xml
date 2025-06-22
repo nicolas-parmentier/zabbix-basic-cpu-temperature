@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>7.2</version>
+    <template_groups>
+        <template_group>
+            <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
+            <name>Templates</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>e06a4583b219415a96fb58dd4717c26c</uuid>
+            <template>Template basicTemp</template>
+            <name>Template basicTemp</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>74561d4d0e3e4c6d9b91c0ef6cc49eee</uuid>
+                    <name>CPU Temperature Avg</name>
+                    <key>basicTemp.cpu.avg</key>
+                    <delay>60s</delay>
+                    <history>90d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Temperature</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>85de623b513049a591e8467cadee24b1</uuid>
+                    <name>CPU Temperature Max</name>
+                    <key>basicTemp.cpu.max</key>
+                    <delay>60s</delay>
+                    <history>90d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Temperature</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>8242aa46431d4cc6898c96aa94baa362</uuid>
+                            <expression>last(/Template basicTemp/basicTemp.cpu.max)&gt;{$TEMP.CPU.SOFT.MAX}</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>avg(/Template basicTemp/basicTemp.cpu.max,60s)&lt;{$TEMP.CPU.SOFT.MAX}-10</recovery_expression>
+                            <name>CPU Temperature high</name>
+                            <priority>AVERAGE</priority>
+                            <dependencies>
+                                <dependency>
+                                    <name>CPU Temperature too high</name>
+                                    <expression>last(/Template basicTemp/basicTemp.cpu.max)&gt;{$TEMP.CPU.SOFT.MAX}+5</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger>
+                        <trigger>
+                            <uuid>57079aaf525441d5a264d5b7c2f999e7</uuid>
+                            <expression>last(/Template basicTemp/basicTemp.cpu.max)&gt;{$TEMP.CPU.SOFT.MAX}+5</expression>
+                            <name>CPU Temperature too high</name>
+                            <priority>DISASTER</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>70e9b3b4ef954d9b828845566f9088c4</uuid>
+                    <name>CPU Temperature Min</name>
+                    <key>basicTemp.cpu.min</key>
+                    <delay>60s</delay>
+                    <history>90d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Temperature</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>a15e19db3d52471a9e28709f62e32a48</uuid>
+                    <name>MB Temperature Avg</name>
+                    <key>basicTemp.mb.avg</key>
+                    <delay>60s</delay>
+                    <history>90d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Temperature</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>fe2c682777164e139474008d55644b5f</uuid>
+                    <name>MB Temperature Max</name>
+                    <key>basicTemp.mb.max</key>
+                    <delay>60s</delay>
+                    <history>90d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Temperature</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>4b3988f5e1ee41049f9e79ae7c656a13</uuid>
+                            <expression>last(/Template basicTemp/basicTemp.mb.max)&gt;{$TEMP.MB.SOFT.MAX}</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>avg(/Template basicTemp/basicTemp.mb.max,60s)&lt;{$TEMP.MB.SOFT.MAX}-10</recovery_expression>
+                            <name>MB Temperature high</name>
+                            <priority>AVERAGE</priority>
+                            <dependencies>
+                                <dependency>
+                                    <name>MB Temperature too high</name>
+                                    <expression>last(/Template basicTemp/basicTemp.mb.max)&gt;{$TEMP.MB.SOFT.MAX}+5</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger>
+                        <trigger>
+                            <uuid>329f77ba6e5247c1945960b39117a7e5</uuid>
+                            <expression>last(/Template basicTemp/basicTemp.mb.max)&gt;{$TEMP.MB.SOFT.MAX}+5</expression>
+                            <name>MB Temperature too high</name>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>7b106281a44341639fa2f861ed31a34e</uuid>
+                    <name>MB Temperature Min</name>
+                    <key>basicTemp.mb.min</key>
+                    <delay>60s</delay>
+                    <history>90d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Temperature</value>
+                        </tag>
+                    </tags>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$TEMP.CPU.SOFT.MAX}</macro>
+                    <value>60</value>
+                    <description>Max CPU temparature before warning alert</description>
+                </macro>
+                <macro>
+                    <macro>{$TEMP.MB.SOFT.MAX}</macro>
+                    <value>35</value>
+                    <description>Max MB temparature before warning alert</description>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <uuid>b10df72fbcde4a308edefe3e4e9d0d65</uuid>
+            <name>CPU Temperature</name>
+            <graph_items>
+                <graph_item>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>1A7C11</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template basicTemp</host>
+                        <key>basicTemp.cpu.min</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>2774A4</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template basicTemp</host>
+                        <key>basicTemp.cpu.avg</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>F63100</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template basicTemp</host>
+                        <key>basicTemp.cpu.max</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <uuid>5ac7967843a54409a4fa8c633d315b6a</uuid>
+            <name>MB Temperature</name>
+            <graph_items>
+                <graph_item>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>1A7C11</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template basicTemp</host>
+                        <key>basicTemp.mb.min</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>2774A4</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template basicTemp</host>
+                        <key>basicTemp.mb.avg</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>F63100</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template basicTemp</host>
+                        <key>basicTemp.mb.max</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
